@@ -1,29 +1,27 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "oktayaydogan/filament-content-width-toggle",
+    "description": "This is my package filament-content-width-toggle",
     "keywords": [
-        ":vendor_name",
+        "oktayaydogan",
         "laravel",
-        ":package_slug"
+        "filament-content-width-toggle"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/oktayaydogan/filament-content-width-toggle",
     "support": {
-        "issues": "https://github.com/:vendor_slug/:package_slug/issues",
-        "source": "https://github.com/:vendor_slug/:package_slug"
+        "issues": "https://github.com/oktayaydogan/filament-content-width-toggle/issues",
+        "source": "https://github.com/oktayaydogan/filament-content-width-toggle"
     },
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Oktay Aydoğan",
+            "email": "aydoganooktay@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.1",
         "filament/filament": "^3.0",
-        "filament/forms": "^3.0",
-        "filament/tables": "^3.0",
         "spatie/laravel-package-tools": "^1.15.0"
     },
     "require-dev": {
@@ -41,13 +39,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Oktayaydogan\\FilamentContentWidthToggle\\": "src/",
+            "Oktayaydogan\\FilamentContentWidthToggle\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "Oktayaydogan\\FilamentContentWidthToggle\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -67,10 +65,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Oktayaydogan\\FilamentContentWidthToggle\\FilamentContentWidthToggleServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentContentWidthToggle": "Oktayaydogan\\FilamentContentWidthToggle\\Facades\\FilamentContentWidthToggle"
             }
         }
     },

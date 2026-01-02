@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Oktayaydogan\FilamentContentWidthToggle\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentContentWidthToggleCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-content-width-toggle';
 
     public $description = 'My command';
 
