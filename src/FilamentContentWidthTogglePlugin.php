@@ -7,9 +7,27 @@ use Filament\Panel;
 
 class FilamentContentWidthTogglePlugin implements Plugin
 {
+    protected string $defaultWidth = '7xl';
+
+    protected bool $displayToggleAction = true;
+
     public function getId(): string
     {
         return 'filament-content-width-toggle';
+    }
+
+    public function defaultWidth(string $width): static
+    {
+        $this->defaultWidth = $width;
+
+        return $this;
+    }
+
+    public function displayToggleAction(bool $condition = true): static
+    {
+        $this->displayToggleAction = $condition;
+
+        return $this;
     }
 
     public function register(Panel $panel): void
