@@ -8,6 +8,7 @@ use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
+use Filament\Support\Facades\FilamentView;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
 use Oktayaydogan\FilamentContentWidthToggle\Commands\FilamentContentWidthToggleCommand;
@@ -21,6 +22,14 @@ class FilamentContentWidthToggleServiceProvider extends PackageServiceProvider
     public static string $name = 'filament-content-width-toggle';
 
     public static string $viewNamespace = 'filament-content-width-toggle';
+
+    public function boot(): void
+    {
+        FilamentView::registerRenderHook(
+            'panels::body.end',
+            fn (): string => '<!-- filament-content-width-toggle: hook-active -->'
+        );
+    }
 
     public function configurePackage(Package $package): void
     {
