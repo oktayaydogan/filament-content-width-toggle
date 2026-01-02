@@ -4,12 +4,15 @@ namespace Oktayaydogan\FilamentContentWidthToggle;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Oktayaydogan\FilamentContentWidthToggle\Support\ContentWidthManager;
 
 class FilamentContentWidthTogglePlugin implements Plugin
 {
     protected string $defaultWidth = '7xl';
 
     protected bool $displayToggleAction = true;
+
+    protected string $defaultMode = ContentWidthManager::MODE_CENTERED;
 
     public function getId(): string
     {
@@ -26,6 +29,13 @@ class FilamentContentWidthTogglePlugin implements Plugin
     public function displayToggleAction(bool $condition = true): static
     {
         $this->displayToggleAction = $condition;
+
+        return $this;
+    }
+
+    public function defaultMode(string $mode): static
+    {
+        $this->defaultMode = $mode;
 
         return $this;
     }
