@@ -2,7 +2,6 @@
 
 namespace Oktayaydogan\FilamentContentWidthToggle;
 
-use Filament\Support\Assets\AlpineComponent;
 use Livewire\Livewire;
 use Oktayaydogan\FilamentContentWidthToggle\Livewire\ContentWidthToggle;
 use Illuminate\Support\Facades\View;
@@ -34,11 +33,11 @@ class FilamentContentWidthToggleServiceProvider extends PackageServiceProvider
         );
         FilamentView::registerRenderHook(
             'panels::main.start',
-            fn() => view('filament-content-width-toggle::layout-width')
+            fn () => view('filament-content-width-toggle::layout-width')
         );
         FilamentView::registerRenderHook(
             'panels::head.end',
-            fn() => view('filament-content-width-toggle::style')
+            fn () => view('filament-content-width-toggle::style')
         );
         Livewire::component('filament-content-width-toggle', ContentWidthToggle::class);
     }
