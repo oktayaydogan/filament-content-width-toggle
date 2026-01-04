@@ -3,7 +3,6 @@
 namespace Oktayaydogan\FilamentContentWidthToggle;
 
 use Filament\Support\Assets\AlpineComponent;
-use Illuminate\Support\Facades\View;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
@@ -11,6 +10,7 @@ use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\View;
 use Livewire\Features\SupportTesting\Testable;
 use Oktayaydogan\FilamentContentWidthToggle\Commands\FilamentContentWidthToggleCommand;
 use Oktayaydogan\FilamentContentWidthToggle\Testing\TestsFilamentContentWidthToggle;
@@ -32,11 +32,11 @@ class FilamentContentWidthToggleServiceProvider extends PackageServiceProvider
         );
         FilamentView::registerRenderHook(
             'panels::main.start',
-            fn() => view('filament-content-width-toggle::layout-width')
+            fn () => view('filament-content-width-toggle::layout-width')
         );
         FilamentView::registerRenderHook(
             'panels::head.end',
-            fn() => view('filament-content-width-toggle::style')
+            fn () => view('filament-content-width-toggle::style')
         );
     }
 
