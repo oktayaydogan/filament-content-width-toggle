@@ -3,25 +3,31 @@
 namespace Oktayaydogan\FilamentContentWidthToggle\Support;
 
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContentWidthResolver
 {
-    public static function resolve(): string
+    public const MODE_FULL = 'full';
+    public const MODE_CENTERED = 'centered';
+
+    public static function get(): string
     {
-        if (Cache::has(self::cacheKey())) {
-            return Cache::get(self::cacheKey());
+        if (config('cache.default') === 'array') {
+            return self::MODE_CENTERED;
         }
-
-        if (Request::has('_content_width')) {
-            return Request::get('_content_width');
-        }
-
-        return 'centered';
+        
+        return Cache::get(self::key(), self::MODE_CENTERED);
     }
 
-    protected static function cacheKey(): string
+    public static function set(string $mode): void
     {
-        return 'filament_content_width';
+        Cache::put(self::key(), $mode, now()->addDays(30));
+    }
+
+    protected static function key(): string
+    {
+        $userId = Auth::id() ?? 'guest';
+
+        return "filament_content_width:{$userId}";
     }
 }
