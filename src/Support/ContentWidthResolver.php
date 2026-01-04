@@ -2,12 +2,13 @@
 
 namespace Oktayaydogan\FilamentContentWidthToggle\Support;
 
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class ContentWidthResolver
 {
     public const MODE_FULL = 'full';
+
     public const MODE_CENTERED = 'centered';
 
     public static function get(): string
@@ -15,7 +16,7 @@ class ContentWidthResolver
         if (config('cache.default') === 'array') {
             return self::MODE_CENTERED;
         }
-        
+
         return Cache::get(self::key(), self::MODE_CENTERED);
     }
 

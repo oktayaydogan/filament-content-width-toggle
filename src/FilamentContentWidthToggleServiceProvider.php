@@ -2,9 +2,6 @@
 
 namespace Oktayaydogan\FilamentContentWidthToggle;
 
-use Livewire\Livewire;
-use Oktayaydogan\FilamentContentWidthToggle\Livewire\ContentWidthToggle;
-use Illuminate\Support\Facades\View;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
@@ -12,8 +9,11 @@ use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\View;
 use Livewire\Features\SupportTesting\Testable;
+use Livewire\Livewire;
 use Oktayaydogan\FilamentContentWidthToggle\Commands\FilamentContentWidthToggleCommand;
+use Oktayaydogan\FilamentContentWidthToggle\Livewire\ContentWidthToggle;
 use Oktayaydogan\FilamentContentWidthToggle\Testing\TestsFilamentContentWidthToggle;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;

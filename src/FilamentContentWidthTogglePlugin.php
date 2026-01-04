@@ -3,12 +3,12 @@
 namespace Oktayaydogan\FilamentContentWidthToggle;
 
 use Filament\Contracts\Plugin;
-use Oktayaydogan\FilamentContentWidthToggle\Support\ContentWidthResolver;
-use Illuminate\Support\Facades\Blade;
+use Filament\Panel;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
-use Filament\Panel;
+use Illuminate\Support\Facades\Blade;
 use Oktayaydogan\FilamentContentWidthToggle\Support\ContentWidthManager;
+use Oktayaydogan\FilamentContentWidthToggle\Support\ContentWidthResolver;
 
 class FilamentContentWidthTogglePlugin implements Plugin
 {
@@ -49,9 +49,9 @@ class FilamentContentWidthTogglePlugin implements Plugin
     public function toggleActionHook(string $hook): static
     {
         $this->toggleActionHook = $hook;
+
         return $this;
     }
-
 
     public function register(Panel $panel): void
     {
@@ -66,7 +66,7 @@ class FilamentContentWidthTogglePlugin implements Plugin
 
         FilamentView::registerRenderHook(
             PanelsRenderHook::USER_MENU_PROFILE_AFTER,
-            fn(): string => Blade::render("@livewire('filament-content-width-toggle')")
+            fn (): string => Blade::render("@livewire('filament-content-width-toggle')")
         );
 
         FilamentView::registerRenderHook(
