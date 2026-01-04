@@ -3,6 +3,10 @@
 namespace Oktayaydogan\FilamentContentWidthToggle;
 
 use Filament\Contracts\Plugin;
+use Oktayaydogan\FilamentContentWidthToggle\Support\ContentWidthResolver;
+use Illuminate\Support\Facades\Blade;
+use Filament\Support\Facades\FilamentView;
+use Filament\View\PanelsRenderHook;
 use Filament\Panel;
 use Oktayaydogan\FilamentContentWidthToggle\Support\ContentWidthManager;
 
@@ -13,6 +17,8 @@ class FilamentContentWidthTogglePlugin implements Plugin
     protected bool $displayToggleAction = true;
 
     protected string $defaultMode = ContentWidthManager::MODE_CENTERED;
+
+    protected string $toggleActionHook = PanelsRenderHook::TOPBAR_END;
 
     public function getId(): string
     {
@@ -40,6 +46,13 @@ class FilamentContentWidthTogglePlugin implements Plugin
         return $this;
     }
 
+    public function toggleActionHook(string $hook): static
+    {
+        $this->toggleActionHook = $hook;
+        return $this;
+    }
+
+
     public function register(Panel $panel): void
     {
         //
@@ -47,7 +60,27 @@ class FilamentContentWidthTogglePlugin implements Plugin
 
     public function boot(Panel $panel): void
     {
-        //
+        if (! $this->displayToggleAction) {
+            return;
+        }
+
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::USER_MENU_PROFILE_AFTER,
+            fn(): string => Blade::render("@livewire('filament-content-width-toggle')")
+        );
+
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::BODY_START,
+            function () {
+                $mode = ContentWidthResolver::get();
+
+                return <<<HTML
+                <script>
+                    document.documentElement.dataset.fcwt = "{$mode}";
+                </script>
+                HTML;
+            }
+        );
     }
 
     public static function make(): static
